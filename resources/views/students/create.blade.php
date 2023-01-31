@@ -53,7 +53,7 @@
                             @csrf
                             <div class="mb-3 mt-3">
                               <label for="name" class="form-label">Name:</label>
-                              <input type="email" class="form-control" id="name" placeholder="Enter Name" name="name">
+                              <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
                             </div>
                             <div class="mb-3">
                               <label for="email" class="form-label">Email:</label>

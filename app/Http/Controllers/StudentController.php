@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
-use  App\Models\StudentDetails;
+use App\Models\StudentDetails;
 
 class StudentController extends Controller
 {
@@ -28,16 +28,33 @@ class StudentController extends Controller
     ]);
 
     $student->studentDetails()->create([
-      'address'=> $request->address,
-      'course'=>$request->course,
-      'roll_no'=>$request->rollno,
+      'address' => $request->address,
+      'course' => $request->course,
+      'roll_no' => $request->rollno,
     ]);
 
-    return redirect('/students')->with('Success','Student and Student Details Created Successfully');
+    return redirect('/students')->with('Success', 'Student and Student Details Created Successfully');
   }
   // method for editing the data 
-  public function edit(Student $student){
-    
-    return view('students.edit');
+  public function edit(Student $student)
+  {
+
+    return view('students.edit', compact('student'));
+  }
+  // method for updating data in to database
+  public function update(Student $student, Request $request)
+  {
+    $student->update([
+      'name' => $request->name,
+      'email' => $request->email,
+      'phone' => $request->phone,
+    ]);
+
+    $student->studentDetails()->update([
+      'address' => $request->address,
+      'course' => $request->course,
+      'roll_no' => $request->rollno,
+    ]);
+    return redirect('students')->with('update', 'Student and Student Details Updated Successfully');
   }
 }

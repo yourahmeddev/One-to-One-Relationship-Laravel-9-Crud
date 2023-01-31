@@ -25,3 +25,5 @@ Route::get('/students/create',[StudentController::class, 'create']);
 Route::post('/students/store',[StudentController::class, 'store']);
 // Route for editing data in the table 
 Route::get('/students/{student}/edit', [StudentController::class,'edit']);
+// Route for updating data 
+Route::put('/students/{student}/update', [StudentController::class, 'update']);

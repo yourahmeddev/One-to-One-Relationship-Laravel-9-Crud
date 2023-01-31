@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>All Students</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -46,6 +46,9 @@
                     <div class="container mt-3">
                         @if (session('Success'))
                         <h4 class="alert alert-success">{{session('Success')}}</h4>
+                        @endif
+                        @if(session('update'))
+                        <h4 class="alert alert-success">{{session('update')}}</h4>
                         @endif
                         <h2>Students
 
