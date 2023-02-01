@@ -12,13 +12,13 @@
     <title>SB Admin 2 - Blank</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-       @include('studentsystem.sidebar')
+        @include('studentsystem.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -45,7 +45,40 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <div class="container mt-3">
+                        @if (session('Success'))
+                            <h4 class="alert alert-success">{{ session('Success') }}</h4>
+                        @endif
+                        <h2>Teachers
+                            <a href="{{ url('/teachers/create') }}" class="btn btn-primary btn-md">Add Teacher</a>
+                        </h2>
+                        <table class="table table-hover mt-3">
+                            <thead>
+                              <th>Sr.no.</th>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                              <th>Qualification</th>
+                              <th>Action</th>
+                            </thead>
+                            <tbody>
+                                  @foreach ($teachers as $teacher)
+                                  <tr>
+                                    <td>{{$teacher->id}}</td>
+                                    <td>{{$teacher->name}}</td>
+                                    <td>{{$teacher->email}}</td>
+                                    <td>{{$teacher->phone}}</td>
+                                    <td>{{$teacher->qualification}}</td>
+                                    <td>
+                                      <a href="" class="btn btn-primary btn-md">Edit</a>
+                                      <a href="" class="btn btn-danger btn-md">Delete</a>
+                                    </td>
+                                  </tr>
+                              @endforeach
+                                
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -95,14 +128,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
 </body>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 
@@ -29,3 +30,12 @@ Route::get('/students/{student}/edit', [StudentController::class,'edit']);
 Route::put('/students/{student}/update', [StudentController::class, 'update']);
 //Route for Deleting the data 
 Route::delete('/students/{student}', [StudentController::class, 'destroy']);
+// student Route end 
+// Teacher Route start
+// Route for listing the teachers
+Route::get('/teachers', [TeacherController::class, 'index']);
+// Route for creating data 
+Route::get('/teachers/create', [TeacherController::class, 'create']);
+// Route for storing Teachers Data
+Route::post('/teachers/store', [TeacherController::class, 'store']);
+// Teacher Route end 
