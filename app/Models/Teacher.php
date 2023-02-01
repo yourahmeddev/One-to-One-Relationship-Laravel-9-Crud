@@ -18,4 +18,8 @@ class Teacher extends Model
      'qualification',
      'slug'
     ];
+
+    public function subjects(){
+        return $this->hasMany(Subject::class, 'teacher_id', 'id');
+    }
 }

@@ -46,29 +46,23 @@
 
                     <!-- Page Heading -->
                     <div class="container mt-3">
-                      <h2> Add Teachers
-                        <a href="{{url('/teachers')}}" class="btn btn-primary btn-md">Back</a>
+                      <h2> Add Subject
+                        <a href="{{url('/subjects')}}" class="btn btn-primary btn-md">Back</a>
                         </h2>            
-                        <form action="{{url('/teachers/store')}}" method="POST">
+                        <form action="{{url('/subjects/store')}}" method="POST">
                             {{-- aunthication method  --}}
                             @csrf
+                            <label for="teachers">Select Teacher</label>
+                            <select name="teacher_id" class="form-control" id="teachers">
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{$teacher->id}}" >{{$teacher->name}}</option>
+                                @endforeach
+                            </select>
                           <div class="mb-3 mt-3">
                             <label for="name" class="form-label">Name:</label>
                             <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
                           </div>
-                          <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
-                          </div>
-                          <div class="mb-3">
-                            <label for="phone" class="form-label">Phone:</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Enter Phone" name="phone">
-                          </div>
-                          <div class="mb-3">
-                            <label for="qualification" class="form-label">Qualification:</label>
-                            <input type="text" class="form-control" id="qualification" placeholder="Enter Qualification" name="qualification">
-                          </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </div>
 

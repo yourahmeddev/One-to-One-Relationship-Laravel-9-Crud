@@ -43,35 +43,33 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+             @if(session('Success'))
+             <h4 class="alert alert-success">{{session('Success')}}</h4>
+             @endif
                     <!-- Page Heading -->
                     <div class="container mt-3">
                         <h2>Subjects
-                            <a href="{{ url('/teachers/create') }}" class="btn btn-primary btn-md">Add Subject</a>
+                            <a href="{{ url('/subjects/create') }}" class="btn btn-primary btn-md">Add Subject</a>
                         </h2>
                         <table class="table table-hover mt-3">
                             <thead>
                                 <th>Sr.no.</th>
+                                <th>Teacher Id</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Qualification</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                               
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href="" class="btn btn-primary btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Delete</a>
-                                    </td>
-                                </tr>
-                               
+                                @foreach ($subjects as $subject)
+                                    <tr>
+                                        <td>{{$subject->id}}</td>
+                                        <td>{{$subject->teacher_id}}</td>
+                                        <td>{{$subject->name}}</td>
+                                        <td>
+                                            <a href="" class="btn btn-primary btn-md">Edit</a>
+                                            <a href="" class="btn btn-danger btn-md">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>

@@ -42,8 +42,8 @@ Route::post('/teachers/store', [TeacherController::class, 'store']);
 // Route for listing data  in subjects table
 Route::get('/subjects', [SubjectController::class, 'index']);
 // Route for storing data
-Route::get('subjects/create', [StudentController::class, 'create']);
+Route::get('/subjects/create', [SubjectController::class, 'create']);
 // Route for storing Data into database
-Route::post('subjects/store', [SubjectController::class, 'store']);
+Route::post('/subjects/store', [SubjectController::class, 'store']);
 
 // Teacher Route end 
