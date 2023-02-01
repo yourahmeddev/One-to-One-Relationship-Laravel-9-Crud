@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
@@ -38,4 +39,11 @@ Route::get('/teachers', [TeacherController::class, 'index']);
 Route::get('/teachers/create', [TeacherController::class, 'create']);
 // Route for storing Teachers Data
 Route::post('/teachers/store', [TeacherController::class, 'store']);
+// Route for listing data  in subjects table
+Route::get('/subjects', [SubjectController::class, 'index']);
+// Route for storing data
+Route::get('subjects/create', [StudentController::class, 'create']);
+// Route for storing Data into database
+Route::post('subjects/store', [SubjectController::class, 'store']);
+
 // Teacher Route end 
