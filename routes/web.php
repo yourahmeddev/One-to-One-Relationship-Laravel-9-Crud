@@ -27,3 +27,5 @@ Route::post('/students/store',[StudentController::class, 'store']);
 Route::get('/students/{student}/edit', [StudentController::class,'edit']);
 // Route for updating data 
 Route::put('/students/{student}/update', [StudentController::class, 'update']);
+//Route for Deleting the data 
+Route::delete('/students/{student}', [StudentController::class, 'destroy']);

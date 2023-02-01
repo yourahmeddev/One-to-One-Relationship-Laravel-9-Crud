@@ -57,4 +57,10 @@ class StudentController extends Controller
     ]);
     return redirect('students')->with('update', 'Student and Student Details Updated Successfully');
   }
+
+  // method for deleting our data 
+  public function destroy(Student $student){
+    $student->delete();
+    return redirect('students')->with('Deleted', 'Student and Student Details Deleted Successfully');
+  }
 }

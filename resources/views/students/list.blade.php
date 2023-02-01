@@ -12,13 +12,13 @@
     <title>All Students</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -45,14 +45,18 @@
                 <div class="container-fluid">
                     <div class="container mt-3">
                         @if (session('Success'))
-                        <h4 class="alert alert-success">{{session('Success')}}</h4>
+                            <h4 class="alert alert-success">{{ session('Success') }}</h4>
                         @endif
-                        @if(session('update'))
-                        <h4 class="alert alert-success">{{session('update')}}</h4>
+                        @if (session('update'))
+                            <h4 class="alert alert-success">{{ session('update') }}</h4>
+                        @endif
+                        {{-- showing delete record message --}}
+                        @if(session('Deleted'))
+                        <h4 class="alert alert-success">{{session('Deleted')}}</h4>
                         @endif
                         <h2>Students
 
-                            <a href="{{url('students/create')}}" class="btn btn-primary btn-md">Add Student</a>
+                            <a href="{{ url('students/create') }}" class="btn btn-primary btn-md">Add Student</a>
 
                         </h2>
                         <table class="table table-hover">
@@ -67,16 +71,22 @@
                             </thead>
                             <tbody>
                                 @foreach ($students as $student)
-                                <tr>
-                                    <td>{{$student->id}}</td>
-                                    <td>{{$student->name}}</td>
-                                    <td>{{$student->email}}</td>
-                                    <td>{{$student->phone}}</td>
-                                    <td>
-                                        <a class="btn btn-primary btn-md" href="{{url('/students/'.$student->id.'/edit')}}">Edit</a>
-                                        <a class="btn btn-danger btn-md">Delete</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $student->id }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->phone }}</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-md"
+                                                href="{{ url('/students/' . $student->id . '/edit') }}">Edit</a>
+                                            <form action="{{url('/students/'.$student->id )}}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                                <button class="btn btn-danger btn-md" type="submit">Delete</button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
